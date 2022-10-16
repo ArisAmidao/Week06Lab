@@ -21,9 +21,9 @@
     <h2>List</h2>
     <form action="" method="post">
         Add Items: <input type="text" name="item">
-        <input type="submit" value="add_item">
+        <input type="submit" value="Add">
         <input type="hidden" name="action" value="add">
-    </form>
+    </form> <br>
     
     <form action="" method="post">
         <c:forEach var="item" items="${sessionScope.items}">
