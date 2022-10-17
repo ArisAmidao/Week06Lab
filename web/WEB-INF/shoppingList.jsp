@@ -4,8 +4,9 @@
     Author     : amida
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,23 +15,23 @@
     </head>
     <body>
         <h1>Shopping List</h1>
-        <p>Hello, ${username}
-            <a href="ShoppingList?action=logout">Logout</a>
-    </body>
-    
-    <h2>List</h2>
-    <form action="" method="post">
-        Add Items: <input type="text" name="item">
-        <input type="submit" value="Add">
-        <input type="hidden" name="action" value="add">
-    </form> <br>
-    
-    <form action="" method="post">
-        <c:forEach var="item" items="${sessionScope.items}">
-            <input type="radio" name="item" value="${item}">
-            <label> ${item}</label> <br>
-        </c:forEach>
-            <input type="submit" value="Delete">
+        <p>Hello ${user}</p>
+        <p><a href="<c:url value='ShoppingList?action=logout'/>">Log out</a></p>
+
+        <h2>List</h2>
+        <form action="" method="post">
+            Add item: <input type="text" name="item" required>
+            <input type="hidden" name="action" value="add">
+            <input type="submit" value="Add">
+        </form>
+
+        <form action="" method="post">
+            <c:forEach var="item" items="${list}">
+                <input type="radio" name="item" value="${item}">${item}<br>
+            </c:forEach>
+            <br>
             <input type="hidden" name="action" value="delete">
-    </form>
+            <input type="submit" value="Delete">
+        </form>    
+    </body>
 </html>
